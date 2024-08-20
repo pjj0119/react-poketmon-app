@@ -19,11 +19,11 @@ const DetailPage = () => {
 	const baseUrl = `https://pokeapi.co/api/v2/pokemon/`
 	
 	useEffect(() => {
-		fetchPokemonData();
-	}, []);
+		fetchPokemonData(pokemonId);
+	}, [pokemonId]);
 	
-	async function fetchPokemonData() {
-		const url = `${baseUrl}${pokemonId}`;
+	async function fetchPokemonData(id) {
+		const url = `${baseUrl}${id}`;
 		try {
 			const {data : pokemonData} = await axios.get(url);
 			if(pokemonData){
@@ -138,7 +138,7 @@ const DetailPage = () => {
 					<Link
 						className='absolute top-[40%] -translate-y-1/2 z-50 left-1'
 						aria-label='Previous Pokemon'
-						to={pokemon.previous}
+						to={`/pokemon/${pokemon.previous}`}
 					>
 						<LessThan className='w-5 h-8 p-1'></LessThan>
 					</Link>
@@ -147,7 +147,7 @@ const DetailPage = () => {
 					<Link
 						className='absolute top-[40%] -translate-y-1/2 z-50 right-1'
 						aria-label='Next Pokemon'
-						to={pokemon.next}
+						to={`/pokemon/${pokemon.next}`}
 					>
 						<GreaterThan className='w-5 h-8 p-1'></GreaterThan>
 					</Link>

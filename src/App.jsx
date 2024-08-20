@@ -5,7 +5,7 @@ import DetailPage from './pages/DetailPage'
 
 const App = () => {
   return (
-	<BrowserRouter>
+	<BrowserRouter basename="/react-poketmon-app">
 		<Routes>
 			<Route path="/" element={<MainPage/>}></Route>
 			<Route path="/pokemon/:id" element={<DetailPage/>}></Route>
